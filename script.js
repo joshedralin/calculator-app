@@ -14,4 +14,23 @@ function divide (a, b) {
     return a * b;
 }
 
-console.log(divide(4, 3));
+let firstNum;
+let secondNum;
+let operator;
+
+function operate(a, b, operator) {
+    switch(operator) {
+        case '+':
+            add(a, b);
+            break;
+        case '-':
+            subtract(a, b);
+            break;
+        case '*':
+            multiply(a, b);
+            break;
+        case '/':
+            divide(a, b);
+            break;
+    }
+}
