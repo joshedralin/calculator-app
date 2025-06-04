@@ -70,7 +70,6 @@ document.querySelectorAll(".operator").forEach(button => {
     button.addEventListener('click', (e) => {
         const op = e.target.dataset.operator;
 
-
         // When there is already an operator selected, and only first number is in
         if (lastKey === 'operator' && secondNum === null) {
             operator = op;
@@ -97,3 +96,12 @@ document.querySelectorAll(".operator").forEach(button => {
     });
 });
 
+// Clear button logic
+document.querySelector('.clear').addEventListener('click', (e) => {
+    displayValue = '';
+    display.textContent = displayValue;
+    firstNum = null;
+    secondNum = null;
+    operator = null;
+    lastKey = null;
+});
