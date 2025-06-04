@@ -45,6 +45,15 @@ document.querySelectorAll(".number").forEach(button => {
             displayValue = '';
             display.textContent = displayValue;
         }
+        // Reset everything if last input was equal and number is input
+        if (lastKey === 'equal') {
+            firstNum = null;
+            secondNum = null;
+            lastOperator = null;
+            displayValue = '';
+            display.textContent = displayValue;
+        }
+
         displayValue += num;
         display.textContent = displayValue;
 
@@ -61,6 +70,8 @@ document.querySelector(".equal").addEventListener('click', (e) => {
         operator = null;
         displayValue = firstNum;
         display.textContent = displayValue;
+
+        lastKey = 'equal';
     }
 });
 
