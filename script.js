@@ -21,7 +21,8 @@ let lastKeyPressed = null;
 
 function operate(a, b, operator) {
     a = Number(a);
-    
+    b = Number(b);
+
     switch(operator) {
         case '+':
             return add(a, b);
@@ -30,6 +31,11 @@ function operate(a, b, operator) {
         case '*':
             return multiply(a, b);
         case '/':
+            if (b === 0) {
+                alert("Really? You should know better. Resetting calculator silly goose.");
+                clearAll();
+                return;
+            }
             return divide(a, b);
     }
 };
@@ -62,7 +68,7 @@ document.querySelectorAll(".number").forEach(button => {
 // Handle equal button logic
 document.querySelector(".equal").addEventListener('click', (e) => {
     if (firstNum !== null && operator !== null && lastKey === 'number') {
-        secondNum = Number(displayValue);
+        secondNum = displayValue;
         firstNum = operate(firstNum, secondNum, operator);
 
         secondNum = null;
@@ -96,12 +102,12 @@ document.querySelectorAll(".operator").forEach(button => {
         // First time pressing operator button with valid value for first number
         if (lastKey === 'number' && firstNum === null && operator === null) {
             highlightButton(e.target);
-            firstNum = Number(displayValue);
+            firstNum = displayValue;
             operator = op;
         // Evalute when first number and operator are present 
         } else if (firstNum !== null && operator !== null && lastKey === 'number') {
             highlightButton(e.target);
-            secondNum = Number(displayValue);
+            secondNum = displayValue;
             firstNum = operate(firstNum, secondNum, operator);
             secondNum = null;
             operator = op;
