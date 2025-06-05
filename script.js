@@ -76,14 +76,14 @@ document.querySelector(".equal").addEventListener('click', (e) => {
 // Helper function to make operator button active
 function highlightButton (buttonElement) {
     selectedOpButton = buttonElement;
-    buttonElement.style.backgroundColor = 'yellow';
+    buttonElement.style.backgroundColor = '#f7d199';
 }
 
 // Helper function to make operator button inactive
 function resetButton (buttonElement) {
     selectedOpButton = null;
     // Will need to change this 
-    buttonElement.style.backgroundColor = 'white'
+    buttonElement.style.backgroundColor = '#e7dbc9'
 }
 
 // Handle operator button logic

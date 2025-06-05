@@ -57,17 +57,10 @@ button {
     width: 170px;
 }
 
-/* .third-row {
-    display: flex;
-    justify-content: space-between;
-    width: 170px;
+.clear, .delete, .operator {
+    background-color :#e7dbc9; 
 }
 
-.fourth-row {
-    display:flex;
-    justify-content;
+.equal {
+    background-color: #f79c3f;
 }
-
-.fifth-row {
-    display: flex;
-} */
