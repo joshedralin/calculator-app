@@ -199,3 +199,23 @@ document.querySelector('.decimal').addEventListener('click', () => {
         decimalPresent = true;
     }
 });
+
+// Keyboard input
+document.addEventListener('keydown', (e) => {
+    const key = e.key;
+
+    let button = document.querySelector(`button[data-number="${key}"]`)
+                || document.querySelector(`button[data-operator="${key}"]`);
+
+    if (key === "Backspace" || key === "Delete") {
+        button = document.querySelector(`.delete`);
+    } else if (key === "Enter") {
+        button = document.querySelector('.equal');
+    } else if (key === "Escape") {
+        clearAll();
+    }
+
+    if (button) {
+        button.click();
+    }
+});
