@@ -12,6 +12,7 @@ let secondNum = null;
 let operator = null;
 let lastKey = null;
 let selectedOpButton = null;
+let decimalPresent = false;
 let displayValue = '';
 const display = document.querySelector('.display');
 
@@ -19,6 +20,8 @@ const display = document.querySelector('.display');
 let lastKeyPressed = null;
 
 function operate(a, b, operator) {
+    a = Number(a);
+    
     switch(operator) {
         case '+':
             return add(a, b);
@@ -40,12 +43,11 @@ document.querySelectorAll(".number").forEach(button => {
             resetButton(selectedOpButton);
             displayValue = '';
             display.textContent = displayValue;
+            decimalPresent = false;
         }
         // Reset everything if last input was equal and number is input
         if (lastKey === 'equal') {
-            firstNum = null;
-            secondNum = null;
-            lastOperator = null;
+            clearAll();
             displayValue = '';
             display.textContent = displayValue;
         }
@@ -121,8 +123,8 @@ document.querySelectorAll(".operator").forEach(button => {
     });
 });
 
-// Clear button logic
-document.querySelector('.clear').addEventListener('click', (e) => {
+// Helper function to clear entire calculator
+function clearAll () {
     displayValue = '';
     display.textContent = displayValue;
     firstNum = null;
@@ -130,8 +132,14 @@ document.querySelector('.clear').addEventListener('click', (e) => {
     operator = null;
     lastKey = null;
     lastKeyPressed = null;
+    decimalPresent = false;
     if (selectedOpButton !== null) resetButton(selectedOpButton);
     selectedOpButton = null;
+}
+
+// Clear button logic
+document.querySelector('.clear').addEventListener('click', (e) => {
+    clearAll();
 });
 
 //For debugging, get rid of all intances of "lastKeyPressed"
@@ -143,9 +151,35 @@ document.querySelectorAll('button').forEach(but => {
 
 // Delete button
 document.querySelector('.delete').addEventListener('click', () => {
-    if (displayValue !== '' && selectedOpButton === null) {
-        displayValue = displayValue.slice(0, -1);
-        display.textContent = displayValue;
+    displayValue = String(displayValue);
+    if (displayValue !== '') {
+        if (displayValue === String(firstNum)) {
+            console.log(displayValue);
+            displayValue = displayValue.slice(0, -1);
+            firstNum = displayValue;
+            display.textContent = displayValue;
+            return;
+        } else {
+            displayValue = displayValue.slice(0, -1);
+            display.textContent = displayValue;
+        }
     }
 });
 
+// Decimal button press
+document.querySelector('.decimal').addEventListener('click', () => {
+    // If last key was operator, start display with decimal
+    if (lastKey === 'operator') {
+        displayValue = '.';
+        display.textContent = displayValue;
+        lastKey = 'decimal';
+        decimalPresent = true;
+    }
+    // Run only if there is no decimal 
+    else if (!decimalPresent) {
+        displayValue += '.';
+        display.textContent = displayValue;
+        lastKey = 'decimal';
+        decimalPresent = true;
+    }
+});
