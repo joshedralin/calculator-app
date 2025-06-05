@@ -1,11 +1,13 @@
 .housing {
     background-color: #e7dbc9;
-    height: 300px;
-    width: 200px;
-    margin: 50px;
+    height: 400px;
+    width: 264px;
+    margin: auto;
+    margin-top: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
+    align-self: center;
 }
 
 .container {
@@ -14,9 +16,9 @@
     align-items: center;
     justify-content: space-between;
     /* margin: 50px; */
-    background-color: black;
-    height: 200px;
-    width: 150px;
+    background-color: #1a1a1a;
+    height: 302px;
+    width: 234px;
     padding: 20px 0;
     margin-top: 30px;
 }
@@ -24,24 +26,48 @@
 .display {
     /* display: flex; */
     background-color: white;
-    height: 22px;
-    width: 100px;
+    height: 30px;
+    width: 175px;
     text-align: right;
+    font-size: 24px;
     padding: 5px 5px;
+    align-content: center;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    font-size: 20px;
+    padding: 6px;
 }
 
 .first-row {
     display: flex;
+    justify-content: flex-start;
+    width: 170px;
+    gap: 5px;
 }
 
-.second-row {
+.second-row, .third-row, .fourth-row, .fifth-row {
     display: flex;
+    justify-content: space-between;
+    width: 170px;
 }
 
-.third-row {
+/* .third-row {
     display: flex;
+    justify-content: space-between;
+    width: 170px;
 }
 
 .fourth-row {
     display:flex;
+    justify-content;
 }
+
+.fifth-row {
+    display: flex;
+} */
