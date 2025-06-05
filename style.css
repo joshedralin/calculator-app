@@ -8,6 +8,7 @@
     justify-content: center;
     align-items: center;
     align-self: center;
+    border-radius: 25px 25px 8px 8px;
 }
 
 .container {
@@ -21,6 +22,7 @@
     width: 234px;
     padding: 20px 0;
     margin-top: 30px;
+    border-radius: 10px;
 }
 
 .display {
@@ -42,6 +44,7 @@ button {
     width: 40px;
     font-size: 20px;
     padding: 6px;
+    border-radius: 5px;
 }
 
 .first-row {
