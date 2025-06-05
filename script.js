@@ -138,6 +138,7 @@ document.querySelector('.clear').addEventListener('click', (e) => {
     operator = null;
     lastKey = null;
     lastKeyPressed = null;
+    if (selectedOpButton !== null) resetButton(selectedOpButton);
     selectedOpButton = null;
 });
 
@@ -147,3 +148,12 @@ document.querySelectorAll('button').forEach(but => {
         lastKeyPressed = e.target.textContent;  // Or use e.target.dataset.value
     });
 });
+
+// Delete button
+document.querySelector('.delete').addEventListener('click', () => {
+    if (displayValue !== '' && selectedOpButton === null) {
+        displayValue = displayValue.slice(0, -1);
+        display.textContent = displayValue;
+    }
+});
+
