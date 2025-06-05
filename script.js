@@ -19,26 +19,36 @@ const display = document.querySelector('.display');
 // For trouble shooting
 let lastKeyPressed = null;
 
+// Operate on two numbers with selected operator
 function operate(a, b, operator) {
     a = Number(a);
     b = Number(b);
 
     switch(operator) {
         case '+':
-            return add(a, b);
+            return formatNumber(add(a, b));
         case '-':
-            return subtract(a, b);
+            return formatNumber(subtract(a, b));
         case '*':
-            return multiply(a, b);
+            return formatNumber(multiply(a, b));
         case '/':
             if (b === 0) {
                 alert("Really? You should know better. Resetting calculator silly goose.");
                 clearAll();
                 return;
             }
-            return divide(a, b);
+            return formatNumber(divide(a, b));
     }
 };
+
+// Clean up result so it fits on display 
+function formatNumber(num) {
+    // Round number if neccessary to 13 digits at most
+    num = parseFloat(num.toFixed(13));
+    // If number is still bigger than 13 digits, show scientific notation
+    return num.toString().length > 15 ? num.toExponential(6) : num;
+}
+
 
 // Update displayValue based off number click
 document.querySelectorAll(".number").forEach(button => {
